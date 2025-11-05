@@ -1,0 +1,178 @@
+Got it. Here’s the **clean, plain-text version** of your viva explanations — without emojis, asterisks, or formatting clutter. You can print or memorize directly from this.
+
+---
+
+### 1. Stack using Array – Code Explanation
+
+In this program, I have declared an array `stack[MAX]` to store elements and a variable `top` to keep track of the last inserted element.
+Initially, `top = -1`, meaning the stack is empty.
+In the `push()` function, I first check if the stack is full using `top == MAX - 1`. If it is full, I print “Stack Overflow”. Otherwise, I increment `top` and insert the new element at that position.
+The `display()` function checks if the stack is empty. If not empty, it prints elements from `top` to `0`, so the last pushed element appears first.
+The `main()` function pushes three elements and displays the stack, showing LIFO behavior (Last In, First Out).
+
+---
+
+### 2. Stack using Linked List – Code Explanation
+
+Here, I have used a linked list instead of an array.
+Each node has `data` and a `next` pointer. The pointer `top` points to the latest inserted node.
+In `push()`, I create a new node dynamically using `malloc()`. I store the value in `newNode->data`, link it to the previous top using `newNode->next = top`, and then update `top = newNode`.
+In `pop()`, I check if the stack is empty (`top == NULL`). If not, I print `top->data`, move the top pointer to `top->next`, and free the old node.
+The `display()` function traverses the linked list from `top` and prints each node’s data.
+This is a dynamic stack that grows and shrinks as needed.
+
+---
+
+### 3. Queue using Array – Code Explanation
+
+Here I have used an array to implement a linear queue.
+I have declared `front` and `rear` as indices. Initially, `front = 0` and `rear = -1`.
+In `insert()`, I first check if `rear == MAX - 1`, meaning the queue is full. If not full, I increase `rear` and store the element in `queue[rear]`.
+In `display()`, I check if `front > rear`, which means the queue is empty. Otherwise, I print elements from `front` to `rear`.
+The first inserted element is always deleted first, so it follows FIFO (First In, First Out).
+
+---
+
+### 4. Circular Queue using Array – Code Explanation
+
+This is a circular queue, which means the rear can wrap back to the front.
+I have declared `front` and `rear` both as -1 initially.
+In `insert()`, if the queue is full, the condition is `(front == 0 && rear == MAX - 1)` or `(rear + 1) % MAX == front`.
+If it is not full, I check if it is the first insertion. If yes, I set both `front = rear = 0`. Otherwise, I do `rear = (rear + 1) % MAX` to wrap around circularly, and then store the element.
+In `delete()`, I print and remove the front element. If it was the only element, I reset `front = rear = -1`. Otherwise, I move `front` ahead using `(front + 1) % MAX`.
+The `display()` function prints elements circularly from `front` to `rear`. This allows efficient reuse of memory.
+
+---
+
+### 5. Singly Linked List (Insert, Reverse, Display) – Code Explanation
+
+Here I have created a singly linked list.
+Each node has `data` and a pointer `next`. The pointer `head` stores the address of the first node.
+In `insert()`, I create a new node using `malloc()`. If the list is empty, the new node becomes the head. Otherwise, I traverse the list until I reach the last node and attach the new node using `temp->next = newNode`.
+In `reverse()`, I use three pointers: `prev`, `curr`, and `next`. I start with `curr = head`, and in a loop, I make `curr->next = prev`, reversing the direction of the link. Then I move all pointers one step ahead. Finally, I update `head = prev`.
+In `display()`, I traverse from `head` to `NULL` and print each node’s data.
+
+---
+
+### 6. Doubly Linked List (Insert, Delete, Display) – Code Explanation
+
+This program demonstrates a doubly linked list.
+Each node has `prev`, `data`, and `next`. The head points to the first node.
+In `insert()`, I create a new node, and if the list is empty, I set `head = newNode`. Otherwise, I go to the last node and connect it by updating both `prev` and `next` links.
+In `delete()`, I search for the node containing the given value. Once found, I link its previous node to its next node and vice versa. If it is the head node, I update the head pointer.
+The `display()` function prints all node values by moving from `head` to the end.
+
+---
+
+### 7. Circular Singly Linked List – Code Explanation
+
+In this circular linked list, the last node’s `next` pointer connects back to the head.
+In `insert()`, if the list is empty, I make the new node point to itself and set it as head. Otherwise, I find the last node (whose next points to head) and set `last->next = newNode`, and `newNode->next = head`.
+In `delete()`, if the list is empty, I print a message. If deleting the head node, I adjust the last node’s next pointer to the new head. Otherwise, I adjust links to skip over the deleted node.
+`display()` starts from head and keeps printing until it comes back to head again.
+
+---
+
+### 8. Binary Search Tree (BST) – Insert and Inorder
+
+This is a binary search tree implementation.
+Each node has data, left, and right pointers.
+The `insert()` function is recursive. If the tree is empty, I create a new node and return it. If the value is less than the root’s data, I insert it in the left subtree; otherwise, it goes to the right subtree.
+The `inorder()` traversal visits nodes in left, root, right order, which gives the elements in sorted order automatically.
+
+---
+
+### 9. Quick Sort – Code Explanation
+
+In quick sort, I select the last element as the pivot.
+The `partition()` function arranges elements so that smaller ones move to the left and larger ones to the right. It returns the correct position of the pivot.
+Then I call `quickSort()` recursively on the left and right parts.
+It is a divide-and-conquer algorithm, very fast on average (O(n log n)). The worst case occurs when the pivot choice is poor, giving O(n²) time.
+
+---
+
+### 10. Merge Sort – Code Explanation
+
+Merge sort also uses divide and conquer.
+I split the array into two halves recursively until each part has one element. Then, I call the `merge()` function, which merges two sorted halves into a single sorted array.
+It always runs in O(n log n) time and is stable, meaning it preserves the order of equal elements.
+
+---
+
+### 11. Heap Sort – Code Explanation
+
+Heap sort uses a binary heap structure.
+First, I call `heapify()` to build a max heap so that the largest element is at the root. Then, I swap the root with the last element and reduce the heap size.
+I call `heapify()` again to restore the heap property.
+This process repeats until the entire array is sorted. It is an in-place sorting algorithm with O(n log n) time complexity.
+
+---
+
+### 12. Insertion Sort – Code Explanation
+
+In this sorting algorithm, I consider the first element as sorted. Then I take each next element and insert it into the correct position among the previously sorted elements.
+This is done by shifting all greater elements one step to the right.
+It is best for small or nearly sorted arrays.
+Time complexity is O(n²) in the worst case and O(n) in the best case.
+
+---
+
+### 13. Depth First Search (DFS) – Code Explanation
+
+DFS explores a graph as deep as possible before backtracking.
+I represent the graph using an adjacency matrix, where `adj[i][j] = 1` if there is an edge between i and j.
+I maintain a `visited[]` array. Starting from a vertex, I mark it visited and recursively call DFS on all unvisited connected vertices.
+DFS uses recursion or an explicit stack. It is used to find paths, connected components, and for topological sorting.
+
+---
+
+### 14. Breadth First Search (BFS) – Code Explanation
+
+BFS visits nodes level by level.
+I use a queue to store nodes to be visited.
+I start with the source node, mark it visited, and enqueue it. Then I repeatedly dequeue a vertex, print it, and enqueue all its unvisited neighbors.
+This continues until the queue becomes empty.
+BFS is ideal for finding the shortest path in unweighted graphs.
+
+---
+
+### 15. Infix to Postfix Conversion – Code Explanation
+
+In this program, I convert an infix expression such as `A+B*C` into postfix `ABC*+`.
+I scan each character one by one.
+If it is an operand, I add it directly to the output.
+If it is an operator, I pop all operators from the stack that have higher or equal precedence, then push the current operator.
+If it is ‘(’, I push it to the stack.
+If it is ‘)’, I pop until ‘(’ is found.
+At the end, I pop all remaining operators.
+This ensures correct operator precedence and removes the need for brackets.
+
+---
+
+### 16. Postfix Evaluation – Code Explanation
+
+This program evaluates a postfix expression like `23*54*+`.
+I scan the expression from left to right. When I find an operand, I push it onto the stack. When I find an operator, I pop two operands — the first popped is the right operand and the second popped is the left operand.
+I perform the operation (`a op b`) and push the result back.
+After the full scan, the final result remains at the top of the stack.
+This works because postfix notation already handles operator precedence.
+
+---
+
+### Tips for Explaining During Viva
+
+Always start with: “This program demonstrates [data structure name].”
+Then explain how it works (LIFO, FIFO, traversal type, etc.).
+Explain the purpose of each function briefly such as `insert`, `delete`, `display`, etc.
+End with: “The time complexity is ... and it follows ... principle.”
+If asked about edge cases, mention:
+
+* Empty stack or queue → underflow
+* Full stack or queue → overflow
+* Binary search tree → skewed tree case
+* Sorting → worst and best cases
+
+---
+
+Would you like me to also make a **short one-line summary** for each (for quick recall during viva)?
+
